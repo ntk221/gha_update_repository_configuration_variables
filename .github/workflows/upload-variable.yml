@@ -20,8 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup GitHub CLI
-        uses: cli/cli@v2
       - name: Upload Variable
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
