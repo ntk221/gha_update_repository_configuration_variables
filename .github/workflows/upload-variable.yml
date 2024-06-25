@@ -1,19 +1,7 @@
 name: Upload Variable
 
 on:
-  workflow_run:
-    workflows: ["Update Variable"]
-    types: [completed]
   workflow_dispatch:
-    inputs:
-      variable_name:
-        description: 'Name of the variable to update'
-        required: true
-        default: 'REPO_VARIABLES'
-      variable_value:
-        description: 'New value for the variable'
-        required: true
-        default: 'Updated!'
 
 jobs:
   upload:
@@ -33,4 +21,3 @@ jobs:
             /repos/${{ github.repository }}/actions/variables/REPO_VARIABLES \
             -f name="REPO_VARIABLES" -f value="Updated"
           
-          echo "Variable '$VARIABLE_NAME' has been updated to '$VARIABLE_VALUE'"
