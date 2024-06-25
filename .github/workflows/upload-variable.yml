@@ -1,8 +1,7 @@
 name: Upload Variable
 
 on:
-  workflow_run:
-    workflows: ["Update Variable"]
+  workflow_dispatch:
 
 jobs:
   upload:
