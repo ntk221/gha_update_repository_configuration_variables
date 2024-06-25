@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Upload Variable
-        run |
+        run: |
           gh api \
             --method PATCH \
             -H "Accept: application/vnd.github+json" \
