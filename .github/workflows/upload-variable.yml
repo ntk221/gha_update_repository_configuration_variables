@@ -1,0 +1,19 @@
+name: Upload Variable
+
+on:
+  workflow_run:
+    workflows: ["Update Variable"]
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upload Variable
+        run |
+          gh api \
+            --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/ntk221/${{ github.repository }}/actions/variables/NAME \
+            -f name="REPO_VARIABLES" -f value="Updated!"
