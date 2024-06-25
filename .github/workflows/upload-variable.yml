@@ -25,14 +25,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VARIABLE_NAME="${{ github.event.inputs.variable_name || 'REPO_VARIABLES' }}"
-          VARIABLE_VALUE="${{ github.event.inputs.variable_value || 'Updated!' }}"
           
           gh api \
             --method PATCH \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/actions/variables/NAME \
-            -f name="$VARIABLE_NAME" -f value="$VARIABLE_VALUE"
+            /repos/${{ github.repository }}/actions/variables/REPO_VARIABLES \
+            -f name="REPO_VARIABLES" -f value="Updated"
           
           echo "Variable '$VARIABLE_NAME' has been updated to '$VARIABLE_VALUE'"
